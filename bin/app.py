@@ -25,9 +25,6 @@ class GameEngine(object):
     def GET(self):
         if session.room:
             return render.show_room(room=session.room)
-        else:
-            # why is there here? do you need it?
-            return render.hello_form()
 
     def POST(self):
         form = web.input(action=None)
