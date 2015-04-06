@@ -1,9 +1,10 @@
 class Room(object):
 
-    def __init__(self, name, description):
+    def __init__(self, name, description, room_type=None):
         self.name = name
         self.description = description
         self.paths = {}
+        self.room_type = room_type
 
     def go(self, direction):
         if not self.paths.get(direction, False):
@@ -88,7 +89,7 @@ the planet below. As it flies to the planet, you look
 back and see your ship implode then explode like a
 bright star, taking out the Gothon ship at the same
 time. You won!
-""")
+""", "win")
 
 the_end_loser = Room("The End",
 """
@@ -96,7 +97,7 @@ You jump into a pod and hit the eject button.
 The pod escapes out into the void of space, then
 implodes as the hull ruptures, crushing your body
 into jam jelly.
-""")
+""", "death")
 
 shoot_death = Room("Death",
 """
@@ -106,7 +107,7 @@ off your aim. Your laser hits his costume but misses him entirely. This
 completely ruins his brand new costume his mother bought him, which
 makes him fly into a rage and blast you repeatedly in the face until
 you are dead. Then he eats you.
-""")
+""", "death")
 
 dodge_death = Room("Death",
 """
@@ -116,7 +117,7 @@ In the middle of your artful dodge your foot slips and you
 bang your head on the metal wall and pass out.
 You wake up shortly after only to die as the Gothon stomps on
 your head and eats you.
-""")
+""", "death")
 
 wrong_number_death = Room("Death",
 """
@@ -124,7 +125,7 @@ The lock buzzes one last time and then you hear a sickening
 melting sound as the mechanism is fused together.
 You decide to sit there, and finally the Gothons blow up the
 ship from their ship and you die.
-""")
+""", "death")
 
 bomb_death = Room("Death",
 """
@@ -134,9 +135,9 @@ Gothon shoots you right in the back killing you.
 As you die you see another Gothon frantically try to disarm
 the bomb. You die knowing they will probably blow up when
 it goes off.
-""")
+""", "death")
 
-generic_death = Room("death", "You died.")
+generic_death = Room("death", "You died.", "death")
 
 escape_pod.add_paths({
     '2': the_end_winner,

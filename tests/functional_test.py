@@ -55,11 +55,12 @@ class GameplayTest(unittest.TestCase):
         # see "The End" room page
         # text says "You won!"
         self.check_h1('The End')
-        winning_text = self.browser.find_element_by_tag_name('pre').text
+        winning_text = self.browser.find_element_by_id('room_description').text
         self.assertIn("You won!", winning_text)
 
-        # you can click on "Play again"
+        # you see "Play again"
         # click!
+        
 
         # you see the game
 
