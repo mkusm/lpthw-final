@@ -7,7 +7,7 @@ $room.description
 </pre>
 
 $if room.room_type == "death" or room.room_type == "win":
-    <p id="play_again"><a href="/">Play Again?</a></p>
+    <p><a id="play_again" href="/">Play Again?</a></p>
 $else:
     <p>
     <form action="/game" method="POST">

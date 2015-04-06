@@ -6,6 +6,7 @@ class GameplayTest(unittest.TestCase):
     
     def setUp(self):
         self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
 
     def tearDown(self):
         self.browser.quit()
@@ -60,9 +61,10 @@ class GameplayTest(unittest.TestCase):
 
         # you see "Play again"
         # click!
-        
+        self.browser.find_element_by_id('play_again').click()
 
         # you see the game
+        self.check_h1('Central Corridor')
 
 if __name__ == '__main__':
     unittest.main()
