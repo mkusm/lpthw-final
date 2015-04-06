@@ -6,7 +6,6 @@ class GameplayTest(unittest.TestCase):
     
     def setUp(self):
         self.browser = webdriver.Firefox()
-        self.browser.implicitly_wait(1)
 
     def tearDown(self):
         self.browser.quit()
@@ -16,6 +15,10 @@ class GameplayTest(unittest.TestCase):
     
     def get_input_element(self):
         return self.browser.find_element_by_id('answer_box')
+
+    def send_answer(self, text):
+        self.get_input_element().send_keys(text)
+        self.get_input_element().send_keys(Keys.ENTER)
 
     def test_winning_the_game(self):
         # want to play the game
@@ -29,8 +32,7 @@ class GameplayTest(unittest.TestCase):
         self.check_h1('Central Corridor')
 
         # type the right phrase 'tell a joke' and hit enter
-        self.get_input_element().send_keys('tell a joke')
-        self.get_input_element().send_keys(Keys.ENTER)
+        self.send_answer('tell a joke')
 
         # see the "Laser Weapon Armory" room page
         # read the text
