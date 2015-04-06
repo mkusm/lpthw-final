@@ -38,17 +38,25 @@ class GameplayTest(unittest.TestCase):
         # read the text
         # type the right phrase '0132' and hit enter
         self.check_h1('Laser Weapon Armory')
+        self.send_answer('0132')
 
         # see "The Bridge" room page
         # read the text
         # type the right phrase 'slowly place the bomb'
+        self.check_h1('The Bridge')
+        self.send_answer('slowly place the bomb')
 
-        # see "The Escape Pod" room page
+        # see "Escape Pod" room page
         # read the text
         # type the right phrase '2'
+        self.check_h1('Escape Pod')
+        self.send_answer('2')
 
         # see "The End" room page
         # text says "You won!"
+        self.check_h1('The End')
+        winning_text = self.browser.find_element_by_tag_name('pre').text
+        self.assertIn("You won!", winning_text)
 
         # you can click on "Play again"
         # click!
